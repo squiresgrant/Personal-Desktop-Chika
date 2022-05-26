@@ -15,17 +15,25 @@ const createWindow = () => {
         width: 400,
         height: 400,
         x: width-250,
-  y: height-220,
-        
+        y: height-220,
+        skipTaskbar: true,
         transparent:true,
         frame: false
     })
-  
+
+    //never gonna give you up
+    //never gonna let you down
+    //never gonna run around and desert you
+    //never gonna make you cry
+    //never gonna say goodbye
+    //never gonna tell a lie and hurt you
+
     win.loadFile('index.html')
     win.setIgnoreMouseEvents(true, { forward: true });
-    const ret = globalShortcut.register('Alt+!', () => {
+    globalShortcut.register('Alt+!', () => {
       win.close()
     })
+    
     /*
     win.webContents.on("before-input-event", (event, input) => {
       if(input.key=='+'&&input.alt){
@@ -37,7 +45,8 @@ const createWindow = () => {
     
   }
   app.whenReady().then(() => {
+    showNotification()
     createWindow()
-    showNotification ()
+    
     
   })
