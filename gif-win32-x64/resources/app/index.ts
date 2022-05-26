@@ -1,9 +1,9 @@
+// @ts-ignore
 const { app, BrowserWindow, Notification, globalShortcut   } = require('electron')
-const NOTIFICATION_TITLE = 'hewwo;)'
-const NOTIFICATION_BODY = 'press alt+! to close;)'
 
 function showNotification () {
-  new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY }).show()
+  // @ts-ignore
+  new Notification({ title: 'hewwo;)', body: 'press alt+! to close;)' }).show()
 }
 const createWindow = () => {
     const { screen } = require('electron')
