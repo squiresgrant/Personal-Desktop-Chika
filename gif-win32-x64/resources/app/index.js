@@ -1,5 +1,10 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, Notification, globalShortcut   } = require('electron')
+const NOTIFICATION_TITLE = 'hewwo;)'
+const NOTIFICATION_BODY = 'press alt+! to close;)'
 
+function showNotification () {
+  new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY }).show()
+}
 const createWindow = () => {
     const { screen } = require('electron')
     
@@ -18,11 +23,21 @@ const createWindow = () => {
   
     win.loadFile('index.html')
     win.setIgnoreMouseEvents(true, { forward: true });
-    
+    const ret = globalShortcut.register('Alt+!', () => {
+      win.close()
+    })
+    /*
+    win.webContents.on("before-input-event", (event, input) => {
+      if(input.key=='+'&&input.alt){
+        win.close()
+      }
+       
+  });*/
         win.setAlwaysOnTop(true);
     
   }
   app.whenReady().then(() => {
     createWindow()
+    showNotification ()
     
   })
